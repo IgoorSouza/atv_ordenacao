@@ -136,6 +136,8 @@ void imprimir(Time times[], int n) {
         printf("Nome: %s; Pontos: %d; Vitorias: %d; Empates: %d; Derrotas: %d; Saldo de gols: %d; Gols Pro: %d; Gols contra: %d\n",
                times[i].nome, times[i].pontos, times[i].vitorias, times[i].empates, times[i].derrotas, times[i].saldoGols, times[i].golsPro, times[i].golsContra);
     }
+
+    printf("\n");
 }
 
 int main() {
@@ -189,35 +191,40 @@ int main() {
 
     fclose(file);
 
-    printf("1. Bubble Sort\n");
-    printf("2. Selection Sort\n");
-    printf("3. Insertion Sort\n");
-    printf("4. Merge Sort\n");
-    printf("5. Sair\n");
+    do {
+        printf("1. Bubble Sort\n");
+        printf("2. Selection Sort\n");
+        printf("3. Insertion Sort\n");
+        printf("4. Merge Sort\n");
+        printf("5. Sair\n");
 
-    scanf("%d", &escolha);
+        scanf("%d", &escolha);
 
-    switch (escolha) {
-        case 1:
-            bubbleSort(times, n);
-            break;
+        switch (escolha) {
+            case 1:
+                bubbleSort(times, n);
+                imprimir(times, n);
+                break;
 
-        case 2:
-            selectionSort(times, n);
-            break;
+            case 2:
+                selectionSort(times, n);
+                imprimir(times, n);
+                break;
 
-        case 3:
-            insertionSort(times, n);
-            break;
+            case 3:
+                insertionSort(times, n);
+                imprimir(times, n);
+                break;
 
-        case 4:
-            mergeSort(times, 0, n - 1);
-            break;
+            case 4:
+               mergeSort(times, 0, n - 1);
+               imprimir(times, n);
+               break;
 
-        default:
-            break;
-    }
+            default:
+                break;
+        }
+    } while (escolha != 5);
 
-    imprimir(times, n);
     return 0;
 }
